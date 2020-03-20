@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+    web:
+        build: .
+        image: rides:latest
+        environment:
+            - TEAM_NAME=CC_0228_0830_1505_1593
+        command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+        container_name: user_service
+        volumes:
+            - .:/user_service
+        ports:
+            - "80:8000"
